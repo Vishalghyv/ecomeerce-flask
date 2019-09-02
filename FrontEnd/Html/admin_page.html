@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{{url_for('static',filename='Styles/style1.css')}}">
+		<script type="text/javascript" src="{{url_for('static',filename='JQuery/jquery.js')}}"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Fashion</title>
+	</head>
+	<body>
+		<div class = "banner">
+			Admin Page
+		</div>
+		<div class = "sub_banner">
+			<div class="feature" id="order">ORDERS</div>
+			<div class="feature" id="listing">LISTING</div>
+			<div class="feature" id="add">ADD PRODUCTS</div>
+			<div class="feature" id="delete">DELETE PRODUCTS</div>
+			<div class="feature" id="modify">MODIFY PRODUCTS</div>
+		</div><br><br>
+		<div class = "order">
+			<div class="form">
+			<form action="{{url_for('admin_order')}}" method = "post" style="padding: 10px;" enctype="multipart/form-data">
+			<button id = "login_butt">Show Button</button>
+			<div class="product">
+				<div id = "name"> <strong>Product Name</strong></div>
+				<div id="product_type"><strong>Product Price</strong></div>
+				<div id ="product_quant"><strong>Quantity</strong></div>
+			</div>
+			<hr>
+			</form>
+			<div class="product">
+				{%for item in lists%}
+				<form action="{{url_for('ordertrack')}}" method = "post" style="padding: 10px;" enctype="multipart/form-data">
+					
+					<div id = "name"> {{item[0]}}</div>
+					<div id="product_type">{{item[1]}}</div>
+					<div id ="product_quant">{{item[2]}}<button href>View</button></div>
+					<input type="name" name="name" value="{{item[0]}}" style="display: none;">
+					<input type="name" name="price" value="{{item[1]}}" style="display: none;">
+					<input type="name" name="stock" value="{{item[2]}}" style="display: none;">
+					<input type="name" name="id" value="{{item[3]}}" style="display: none;">
+				</form>
+				{%endfor%}
+			
+			</div>
+			</div>
+		</div>
+		<div class = "listing">
+			<div class="form">
+			<form action="{{url_for('admin_list')}}" method = "post" style="padding: 10px;" enctype="multipart/form-data">
+			<button id = "login_butt">Show Button</button>
+			<div class="product">
+				<div id = "name"> <strong>Product Name</strong></div>
+				<div id="product_type"><strong>Product Type</strong></div>
+				<div id ="product_quant"><strong>Price * Quantity</strong></div>
+			</div>
+			<hr>
+			<div class="product">
+				{%for item in lists%}
+				<div id = "name"> {{item[0]}}</div>
+				<div id="product_type">{{item[1]}}</div>
+				<div id ="product_quant">{{item[2]}}*{{item[3]}}</div>
+				{%endfor%}
+			</div>
+			</form>
+			</div>
+		</div>
+		<div class = "add">
+			<div class="form">
+			<form action="{{url_for('admin_add')}}" method = "post" style="padding: 10px;" enctype="multipart/form-data">
+				<label id = "label_log">Name :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label id = "label_log">Product Type :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label id = "label_log">Price :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label id = "label_log">Product Quantity</label><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input id ="form_log" type="name" name="name" placeholder="Name">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input id ="form_log" type="name" name="type" placeholder="Type">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input id ="form_log" type="name" name="price" placeholder="Type">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input id ="form_log" type="name" name="quantity" placeholder="Quantity">
+				<br>
+				<input type="file" name="photo" id = "fileupload">
+				<input type="file" name="photo1" id = "fileupload">
+				<input type="file" name="photo2" id = "fileupload">
+				<input type="file" name="photo3" id = "fileupload">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button id = "login_butt">Add</button>
+			</form>
+			</div>
+		</div>
+		<div class = "delete">
+			<div class="form">
+			<form action="{{url_for('admin_delete')}}" method = "post" style="padding: 10px;">
+				<label id = "label_log">Name :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input id ="form_log" type="name" name="name" placeholder="Name">
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button id = "login_butt">Delete</button>
+			</form>
+			</div>
+		</div>
+		<div class = "modify">
+			<div class="form">
+			<form action="{{url_for('admin_modify')}}" method = "post" style="padding: 10px;" enctype="multipart/form-data">
+				<label id = "label_log">Name :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label id = "label_log">Product Type :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label id = "label_log">Product Quantity</label><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input id ="form_log" type="name" name="name" placeholder="Name">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input id ="form_log" type="name" name="type" placeholder="Type">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input id ="form_log" type="name" name="quantity" placeholder="New Quantity">
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button id = "login_butt">Add</button>
+			</form>
+		</div>
+		</div>
+	</body>
+
+<script type="text/javascript" src="{{url_for('static',filename='javascript/javascript1.js')}}"></script>
+
+</html>

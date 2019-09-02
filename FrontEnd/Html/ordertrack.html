@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{{url_for('static',filename='Styles/style1.css')}}">
+		<script type="text/javascript" src="{{url_for('static',filename='JQuery/jquery.js')}}"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Fashion</title>
+	</head>
+	<body>
+		<div class = "banner">
+			Admin Page
+		</div>
+	<br><br>
+	<h1 style="margin: 0 auto;text-align: center">Order is {{order_place}}</h1>
+	<br><br>
+	<h1 style="margin: 0 auto;text-align: center">Order name is {{order_name}}</h1>
+	<br><br>
+	<h1 style="margin: 0 auto;text-align: center">Order price {{order_price}}</h1>
+	<br><br>
+	<form action="{{url_for('trackid')}}" method = "post" style="padding: 10px;margin: 0 auto;text-align: center;" enctype="multipart/form-data">
+		<label id = "label_log">EDIT THE LOCATION OF THE PACKAGE :</label><br><br>
+		<input id ="form_log" type="name" name="place" placeholder="PLACE">
+		<br>
+		<input id ="form_log" type="name" name="id" value="{{order_id}}" style="display: none;">
+		<input id ="form_log" type="name" name="name" value="{{order_name}}" style="display: none;">
+		<input id ="form_log" type="name" name="price" value="{{order_price}}" style="display: none;">
+		<button id = "login_butt">Submit</button>
+	</form>
+</body>
+
+<script type="text/javascript" src="{{url_for('static',filename='javascript/javascript1.js')}}"></script>
+
+</html>

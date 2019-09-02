@@ -1,0 +1,20 @@
+{%extends 'Header.html'%}
+{%block content%}
+	<div class="container">
+			<h1>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('dress')}}" style="color: black"><u >Dresses</u></h1></a>
+		<br>
+
+
+		
+		{% for item in name %}
+		<form action="{{url_for('buynow')}}" method = "post" enctype="multipart/form-data">	
+			<input type="name" name="name" style="display: none;" value="{{item}}">
+			<button style="border:none; background-color: rgb(255,255,255);" type="submit"><img  id = 'images' src="{{url_for('static',filename=item)}}">
+			</button>
+
+		</form>
+		{%endfor%}
+			<br><br>
+			<hr><br>
+	</div>
+{%endblock%}

@@ -1,0 +1,10 @@
+{% extends 'Header.html' %}
+{% block content %}
+	<h1 style="margin: 0 auto;text-align: center">{{mainheading}}</h1>
+	<div style="position: relative;width: 50%;border: 1px solid black;display: flex;justify-content: space-around;margin: 0 auto;">
+	{% for item in heading%}
+	<h2>{{item}}</h2>
+	{%endfor%}</div>
+	<br><br>
+{% endblock content%}
+

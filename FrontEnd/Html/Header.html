@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{{url_for('static',filename='Styles/style.css')}}">
+		<script type="text/javascript" src="{{url_for('static',filename='JQuery/jquery.js')}}"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Vinsi</title>
+	</head>
+	<body>
+		<div class = "header">
+			<a href="{{url_for('home')}}" style="color: black">
+			<div id="logo">
+				Fashion
+			</div></a>
+			<ul id="list">
+				<a href="{{url_for('dress')}}"><li id ="dress">Dress</li></a>
+				<a href="{{url_for('jewel')}}"><li id ="jewel">Jewellery</li></a>
+				<a href="{{url_for('cosmetic')}}"><li style="border-right: none;" id ="cosmetic">Cosmetics</li></a>
+			</ul>
+		</div>
+		
+
+	{% block content %}
+	{% endblock content%}
+	<div id="login">{{condition}}</div>
+		<div id="login_form">
+			<div id = "log_form">
+				<form action="{{url_for('login')}}" method = "post">
+					<label id = "label_log">Email :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label id = "label_log">Password :</label><br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input id ="form_log" type="Email" name="email" placeholder="youremail@example.com">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input id ="form_log" type="Password" name="password" placeholder="password">
+					<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<button id = "login_butt">LOG IN</button>
+				</form>
+				<hr>
+				<span style="font-size: 20px;">New here create a account Now!!!</span>
+				<form style="margin-top: 10px;" action="{{url_for('register')}}" method="post">
+					<label id = "label_log" >First Name :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label id = "label_log">Last Name :</label><br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input id ="form_log" type="text" name="newname" placeholder="John">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input id ="form_log" type="text" name="newlastname" placeholder="Smith">
+					<br><br>
+					<label id = "label_log">Email :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label id = "label_log">Password :</label><br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input id ="form_log" type="Email" name="newemail" placeholder="youremail@example.com">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input id ="form_log" type="Password" name="newpassword" placeholder="password">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<button id="signup_butt">Sign Up</button>
+				</form>
+			</div>
+		</div>
+	<div class = "board">
+		<em id = "special">TODAY'S SPECIAL</em>
+		<img src="{{url_for('static',filename='Html/oo.gif')}}" id= "chalkboard">
+	</div>
+	<div class = "footer">
+		Enter Your Email to get notified for our new Products
+		<form>
+			<input type="Email" name="" placeholder="Email" id="email">
+			<button id="submit">Submit</button>
+		</form>
+		<ul class="footer_content">
+			<a href="{{url_for('home')}}" style="color: white"><li>Home</li></a>
+			<a href="{{url_for('dress')}}" style="color: white"><li>Dress</li></a>
+			<a href="{{url_for('jewel')}}" style="color: white"><li>Jewellery</li></a>
+			<a href="{{url_for('cosmetic')}}" style="color: white"><li>Cosmetic</li></a>
+		</ul>
+		<br><br><br><br><hr><br><br>
+		Legal Stuff<span id="icon"><i class="fa fa-twitter-square" style="font-size:36px"></i>&nbsp;&nbsp;<i class="fa fa-facebook-square" style="font-size:36px"></i>&nbsp;&nbsp;<i class="fa fa-youtube-play" style="font-size:36px;color: red"></i>&nbsp;&nbsp;<i class="fa fa-amazon" style="font-size:36px;color: black"></i></span>
+	</div>
+	<div class = "image">
+		<img src="{{url_for('static',filename='Resources/test1.gif')}}"  id ="doodle">
+		<div id ="text">
+			<b>HI {{nameit}}</b>
+		</div>
+	</div>
+	<!--  -->
+	</body>
+<script type="text/javascript" src="{{url_for('static',filename='javascript/javascript.js')}}"></script>
+
+</html>

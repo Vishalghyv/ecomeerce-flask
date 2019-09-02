@@ -1,0 +1,12 @@
+{%extends 'Header.html'%}
+{%block content%}
+	<div class="container">
+		<h1>		&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('jewel')}}" style="color: black"><u >Jewellery</u></h1></a>
+		<br>
+		{% for item in name %}	
+		<img id = 'images' src="{{url_for('static',filename=item)}}">
+		{%endfor%}
+			<br><br>
+			<hr><br>
+	</div>
+{%endblock%}
